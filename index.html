@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CIEE NDUTT ULTAH 💕</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:"Poppins",sans-serif;}
+body{overflow:hidden;background:#ffeaf3;}
+
+/* Slide Awal */
+.container{height:100vh;width:100vw;display:flex;justify-content:center;align-items:center;flex-direction:column;background:linear-gradient(to bottom right,#ffd6e8,#ffeef7);}
+.container h1{font-size:1.6rem;color:#c26189;margin-bottom:15px;letter-spacing:1px;}
+.container button{background:#ff9ec7;border:none;padding:12px 35px;font-size:1.2rem;border-radius:25px;cursor:pointer;color:white;box-shadow:0 4px 10px rgba(0,0,0,0.15);transition:0.3s ease;}
+.container button:hover{transform:scale(1.05);background:#ff84b2;}
+
+/* Slides umum */
+.slideContainer{display:none;position:relative;height:100vh;width:100vw;overflow:hidden;}
+.fade{opacity:0;transition:opacity 1.5s ease-in-out;}
+.show{opacity:1;}
+
+/* Slide1 */
+.slide{position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 2s ease-in-out;background-position:center;background-size:cover;filter:blur(4px) brightness(0.55) saturate(1.2);}
+.slide.active{opacity:1;}
+.overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(to bottom right,rgba(255,192,203,0.35),rgba(255,182,193,0.45));z-index:2;}
+.text1{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;text-align:center;font-size:1.8rem;font-weight:500;text-shadow:0 0 5px rgba(255,255,255,0.6),0 0 15px rgba(255,150,200,0.7),0 0 25px rgba(255,182,193,0.9);line-height:1.6;z-index:5;padding:0 20px;}
+
+/* Slide2 polaroid */
+.slide2 .polaroid{position:absolute;background:white;padding:6px;box-shadow:0 4px 10px rgba(0,0,0,0.2);border-radius:10px;opacity:0.8;transition:opacity 1.2s ease;}
+.slide2 .polaroid img{width:140px;height:180px;object-fit:cover;border-radius:6px;}
+.text2{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;text-align:center;font-size:1.6rem;font-weight:500;line-height:1.6;text-shadow:2px 2px 5px #c26189;z-index:10;}
+
+/* Slide3 polaroid satu per satu */
+.slide3{background:#ffeaf3;}
+.slide3 .polaroid{position:absolute;background:white;padding:6px;box-shadow:0 4px 10px rgba(0,0,0,0.2);border-radius:10px;opacity:0;transition:opacity 1.5s ease, transform 1s ease;}
+.slide3 .polaroid img{width:140px;height:180px;object-fit:cover;border-radius:6px;}
+.text3{position:absolute;top:10%;left:50%;transform:translateX(-50%);color:#c26189;text-align:center;font-size:1.8rem;font-weight:600;line-height:1.6;text-shadow:2px 2px 5px #fff;max-width:90%;z-index:20;}
+
+/* SlideFinal romantis */
+.slideFinal{
+  background:#ffdfd9;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  color:#c26189;
+  text-align:center;
+  padding:0 20px;
+  height:100vh;
+}
+.slideFinal h1{font-size:2rem;text-shadow:2px 2px 5px #fff;margin-bottom:20px;}
+.slideFinal p{font-size:1.5rem;line-height:1.6;}
+
+/* SlideBirthday */
+.slideBirthday{
+  background:#ffd6e8;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  color:#fff;
+  text-align:center;
+  height:100vh;
+  position:relative;
+}
+.slideBirthday h1{
+  font-size:3rem;
+  text-shadow:2px 2px 10px #ff84b2;
+  margin-bottom:20px;
+}
+canvas#fireworksBirthday{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  z-index:0;
+}
+
+@media(max-width:768px){
+  .text1,.text2,.text3,.slideFinal h1,.slideFinal p,.slideBirthday h1{font-size:1.5rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- Slide Awal -->
+<div class="container" id="startSlide">
+<h1>TEKAN AKU KAK 💕</h1>
+<button id="mulai">BURU!</button>
+</div>
+
+<!-- Slide1 -->
+<div class="slideContainer fade" id="slide1">
+<div class="slide active" style="background-image:url('peluk1.jpg');"></div>
+<div class="slide" style="background-image:url('peluk2.jpg');"></div>
+<div class="slide" style="background-image:url('peluk3.jpg');"></div>
+<div class="slide" style="background-image:url('peluk4.jpg');"></div>
+<div class="slide" style="background-image:url('peluk5.jpg');"></div>
+<div class="overlay"></div>
+<div class="text1">💖 CIEE NDUTT ULTAH YANG KE 17 💖<br>HAPPY SWEET SEVENTEEN SAYANG 💕<br>Semoga makin lucu, makin gemass, makin bersinar ✨<br>Kurangi sedihnya okey? Karena kamu punya aku sekarang 💫<br>💞 AKU SAYANG KAMU BANGET 💞</div>
+<canvas id="fireworks"></canvas>
+</div>
+
+<!-- Slide2 -->
+<div class="slideContainer fade slide2" id="slide2">
+<div class="text2">😜 TAUU GAAA 😜<br>Kadang aku suka nyebelin,<br>suka bikin kamu badmood... 😅<br>Tapiii itu cuma karena aku sayang banget sama kamu 💗<br>Jadi maaf yaa kalau pernah bikin kesel 💕</div>
+</div>
+
+<!-- Slide3 -->
+<div class="slideContainer fade slide3" id="slide3">
+<div class="text3">💖 Foto-foto manis untukmu 💖</div>
+</div>
+
+<!-- SlideFinal -->
+<div class="slideContainer fade slideFinal" id="slideFinal">
+<h1>Aku selalu berada di pihakmu 💖</h1>
+<p>Walau dunia membencimu, aku tetap di sini.<br>Selalu mendukungmu dan mencintaimu sepenuh hati 🌸</p>
+</div>
+
+<!-- SlideBirthday -->
+<div class="slideContainer fade slideBirthday" id="slideBirthday">
+<h1>HAPPY BIRTHDAY CAYANGGG 💖🎉</h1>
+<canvas id="fireworksBirthday"></canvas>
+</div>
+
+<audio id="musik" src="ALAMAK.mp3" loop></audio>
+
+<script>
+const btn=document.getElementById("mulai");
+const startSlide=document.getElementById("startSlide");
+const slide1=document.getElementById("slide1");
+const slide2=document.getElementById("slide2");
+const slide3=document.getElementById("slide3");
+const slideFinal=document.getElementById("slideFinal");
+const slideBirthday=document.getElementById("slideBirthday");
+const musik=document.getElementById("musik");
+const slides=document.querySelectorAll("#slide1 .slide");
+const canvas=document.getElementById("fireworks");
+const ctx=canvas.getContext("2d");
+let particles=[];
+
+btn.addEventListener("click",()=>{
+  startSlide.style.display="none";
+  slide1.style.display="block";
+  slide1.classList.add("show");
+  musik.play();
+  startSlide1();
+});
+
+// Slide1
+function startSlide1(){
+  let idx=0;
+  const interval=setInterval(()=>{
+    slides[idx].classList.remove("active");
+    idx=(idx+1)%slides.length;
+    slides[idx].classList.add("active");
+  },4000);
+
+  resizeCanvas();
+  animateFireworks();
+  window.addEventListener("resize",resizeCanvas);
+
+  // Slide2
+  setTimeout(()=>{
+    clearInterval(interval);
+    fadeTransition(slide1,slide2);
+    tampilPolaroidSlide2();
+  },20000);
+
+  // Slide3
+  setTimeout(()=>{
+    fadeTransition(slide2,slide3);
+    tampilPolaroidSlide3();
+  },30000);
+
+  // SlideFinal
+  setTimeout(()=>{
+    fadeTransition(slide3,slideFinal);
+  },42000);
+
+  // SlideBirthday
+  setTimeout(()=>{
+    fadeTransition(slideFinal,slideBirthday);
+    startFireworksBirthday();
+  },50000);
+}
+
+function fadeTransition(current,next){
+  current.classList.remove("show");
+  setTimeout(()=>{
+    current.style.display="none";
+    next.style.display="block";
+    next.classList.add("show");
+  },500);
+}
+
+// Resize canvas
+function resizeCanvas(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}
+
+// Fireworks Slide1
+function createFirework(x,y,colors){
+  const count=40+Math.random()*25;
+  for(let i=0;i<count;i++){
+    particles.push({x,y,angle:Math.random()*2*Math.PI,speed:Math.random()*5+2,alpha:1,radius:Math.random()*2+1.5,color:colors[Math.floor(Math.random()*colors.length)]});
+  }
+}
+function animateFireworks(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  particles.forEach((p,i)=>{
+    const dx=Math.cos(p.angle)*p.speed;
+    const dy=Math.sin(p.angle)*p.speed+0.5;
+    p.x+=dx;p.y+=dy;p.alpha-=0.015;
+    ctx.globalAlpha=p.alpha;
+    ctx.fillStyle=p.color;
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.radius,0,Math.PI*2);
+    ctx.fill();
+    if(p.alpha<=0)particles.splice(i,1);
+  });
+  if(Math.random()<0.05){
+    const x=Math.random()*canvas.width;
+    const y=Math.random()*(canvas.height*0.6);
+    const colors=["rgba(255,182,193,1)","rgba(255,192,203,1)","rgba(255,150,200,1)","rgba(255,230,240,1)","rgba(255,240,250,1)"];
+    createFirework(x,y,colors);
+  }
+  requestAnimationFrame(animateFireworks);
+}
+
+// Slide2 polaroid tertata
+function tampilPolaroidSlide2(){
+  const slide=slide2;
+  const images=["comel1.jpg","comel2.jpg","comel3.jpg","comel4.jpg","comel5.jpg","comel6.jpg","comel7.jpg"];
+  const positions=[
+    {top:"10%",left:"10%",rotate:"-10deg"},
+    {top:"10%",left:"40%",rotate:"5deg"},
+    {top:"10%",left:"70%",rotate:"-5deg"},
+    {top:"40%",left:"20%",rotate:"10deg"},
+    {top:"40%",left:"60%",rotate:"-8deg"},
+    {top:"65%",left:"30%",rotate:"12deg"},
+    {top:"65%",left:"70%",rotate:"-12deg"},
+  ];
+  images.forEach((src,i)=>{
+    const div=document.createElement("div");
+    div.classList.add("polaroid");
+    div.style.top=positions[i].top;
+    div.style.left=positions[i].left;
+    div.style.transform=`rotate(${positions[i].rotate})`;
+    const img=document.createElement("img");
+    img.src=src; // gunakan file comel
+    div.appendChild(img);
+    slide.appendChild(div);
+    setInterval(()=>{ div.style.opacity=0.5+Math.random()*0.3; },1000+Math.random()*800);
+  });
+}
+
+
+// Slide3 polaroid satu per satu muncul
+function tampilPolaroidSlide3(){
+  const slide=slide3;
+  const images=["dump1.jpg","dump2.jpg","dump3.jpg","dump4.jpg","dump5.jpg","dump6.jpg","dump7.jpg","dump8.jpg","dump9.jpg","dump10.jpg","dump11.jpg"];
+  const positions=[
+    {top:"15%",left:"10%"},{top:"15%",left:"25%"},{top:"15%",left:"40%"},{top:"15%",left:"55%"},{top:"15%",left:"70%"},{top:"15%",left:"85%"},
+    {top:"45%",left:"15%"},{top:"45%",left:"30%"},{top:"45%",left:"45%"},{top:"45%",left:"60%"},{top:"45%",left:"75%"}
+  ];
+  images.forEach((src,i)=>{
+    const div=document.createElement("div");
+    div.classList.add("polaroid");
+    div.style.top=positions[i].top;
+    div.style.left=positions[i].left;
+    div.style.opacity=0;
+    const img=document.createElement("img");
+    img.src=src;
+    div.appendChild(img);
+    slide.appendChild(div);
+    setTimeout(()=>{ div.style.opacity=0.8; animatePolaroidGoyang(div); },i*500);
+  });
+}
+
+function animatePolaroidGoyang(el){
+  let angle=0;
+  setInterval(()=>{ angle=Math.sin(Date.now()/500)*5; el.style.transform=`rotate(${angle}deg)`; },50);
+}
+
+// Fireworks Birthday
+function startFireworksBirthday(){
+  const canvasB=document.getElementById("fireworksBirthday");
+  const ctxB=canvasB.getContext("2d");
+  canvasB.width=window.innerWidth;
+  canvasB.height=window.innerHeight;
+  let particlesB=[];
+  function createFireworkB(){
+    const x=Math.random()*canvasB.width;
+    const y=Math.random()*canvasB.height*0.5;
+    const count=50+Math.random()*20;
+    const colors=["#ff69b4","#ff1493","#ffc0cb","#ffa07a","#ff4500"];
+    for(let i=0;i<count;i++){
+      particlesB.push({x,y,angle:Math.random()*2*Math.PI,speed:Math.random()*5+2,alpha:1,radius:2+Math.random()*2,color:colors[Math.floor(Math.random()*colors.length)]});
+    }
+  }
+  function animateB(){
+    ctxB.clearRect(0,0,canvasB.width,canvasB.height);
+    particlesB.forEach((p,i)=>{
+      p.x+=Math.cos(p.angle)*p.speed;
+      p.y+=Math.sin(p.angle)*p.speed+0.5;
+      p.alpha-=0.02;
+      ctxB.globalAlpha=p.alpha;
+      ctxB.fillStyle=p.color;
+      ctxB.beginPath();
+      ctxB.arc(p.x,p.y,p.radius,0,Math.PI*2);
+      ctxB.fill();
+      if(p.alpha<=0)particlesB.splice(i,1);
+    });
+    if(Math.random()<0.08) createFireworkB();
+    requestAnimationFrame(animateB);
+  }
+  animateB();
+}
+</script>
+</body>
+</html>
